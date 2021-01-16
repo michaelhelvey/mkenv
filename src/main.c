@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include "file.h"
 #include "args.h"
 
 #define NUM_SUPPORTED_CMDS 3
-
 #define ASSERT_NOT_REACHED() assert(0 && "This should never be reached")
 
 /**
@@ -35,20 +35,35 @@ void print_error(const char *error)
 	print_usage();
 }
 
+void do_show()
+{
+	char current_env[MKENV_ENV_MAX_LEN];
+	get_current_env(current_env);
+	printf("Current environment: %s", current_env);
+}
+
 void do_set(char* env)
 {
 	assert(env && "do_set requires one non NULL environment argument");	
-	printf("doing set for env: %s\n", env);
+	const char* temp = ".env.";
+	char *env_file_name;
+	if ((env_file_name = (char *)malloc(strlen(temp) + strlen(env) + 1)) == NULL) {
+		fprintf(stderr, "out of memory\n");
+	}
+	strcat(env_file_name, temp);
+	strcat(env_file_name, env);
+
+	copy_file(env_file_name, ".env");
+	free(env_file_name);
+
+	set_current_env_state(env);
+
+	printf("Activated environment: %s\n", env);
 }
 
 void do_help()
 {
 	print_usage();
-}
-
-void do_show()
-{
-	printf("calling do_show\n");
 }
 
 void call_command(cmd_type type, char **argv)

@@ -1,2 +1,6 @@
 build/
 .ccls-cache
+
+.mkenv
+.env
+.env.*

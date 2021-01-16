@@ -2,9 +2,11 @@ CC = gcc
 CFLAGS = -g -Wall -Werror -Wpedantic -std=c11
 BUILD_DIR = build
 EFILE = $(BUILD_DIR)/mkenv
+INSTALL_LOC = ~/.local/bin/mkenv
 OBJS = \
 		  main.o 	\
-		  args.o
+		  args.o 	\
+		  file.o
 
 $(EFILE): $(OBJS)
 	@echo "Linking..."
@@ -13,4 +15,7 @@ $(EFILE): $(OBJS)
 
 $(OBJS):
 	$(CC) $(CFLAGS) -c src/$*.c -o build/$*.o
+
+install: $(EFILE)
+	cp $(EFILE) $(INSTALL_LOC)
 
