@@ -37,7 +37,7 @@ void get_current_env(char *env)
 	}
 	fgets(env, MKENV_ENV_MAX_LEN, state_file);
 	if (strlen(env) == 0) {
-		printf("Invalid .mkenv file: empty contents.\n");
+		fprintf(stderr, "Invalid .mkenv file: empty contents.\n");
 		exit(1);
 	}
 	fclose(state_file);
