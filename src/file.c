@@ -35,11 +35,15 @@ void get_current_env(char *env)
 		perror("Could not open .mkenv file");
 		exit(1);
 	}
-	fgets(env, MKENV_ENV_MAX_LEN, state_file);
+	if (fgets(env, MKENV_ENV_MAX_LEN, state_file) == NULL) {
+		fprintf(stderr, "Could not read out of .mkenv file.");
+		exit(1);
+	}
 	if (strlen(env) == 0) {
 		fprintf(stderr, "Invalid .mkenv file: empty contents.\n");
 		exit(1);
 	}
+
 	fclose(state_file);
 }
 

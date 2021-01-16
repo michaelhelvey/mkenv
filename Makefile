@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -Werror -Wpedantic -std=c11
+CFLAGS = -O -Wall -Werror -Wpedantic -std=c11
 BUILD_DIR = build
 EFILE = $(BUILD_DIR)/mkenv
 INSTALL_LOC = ~/.local/bin/mkenv
