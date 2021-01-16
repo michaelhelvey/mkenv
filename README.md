@@ -6,14 +6,17 @@ A simple script for managing `.env` files.
 ## Installation
 
 Requirements:
-	- `gcc` (I have version 9.3)
-	- `make` (I have version 4.2)
+
+- `gcc` (I have version 9.3)
+- `make` (I have version 4.2)
 
 Building:
-	- `make`
+
+- `make`
 
 Installation:
-	- Copy `./build/mkenv` to wherever you want to install the program
+
+- Copy `./build/mkenv` to wherever you want to install the program
 
 
 ## Usage
