@@ -1,7 +1,7 @@
 # HT Job Vranish: https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
 
 TARGET_EXEC ?= mkenv
-MKENV_INSTALL_LOC = ~/.local/bin/$(TARGET_EXEC)
+MKENV_INSTALL_LOC ?= ~/.local/bin/$(TARGET_EXEC)
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src
 
